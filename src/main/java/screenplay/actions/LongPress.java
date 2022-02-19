@@ -32,15 +32,18 @@ public class LongPress implements Interaction {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        WebDriver driver = ((WebDriverFacade) BrowseTheWeb.as(actor).getDriver()).getProxiedDriver();
-        /*
+//        WebDriver driver = ((WebDriverFacade) BrowseTheWeb.as(actor).getDriver()).getProxiedDriver();
+        WebDriver driver= actor.abilityTo(BrowseTheWeb.class).getDriver();
+                /*
         AndroidTouchAction touch = new AndroidTouchAction((AppiumDriver)driver);
         touch.longPress(LongPressOptions.longPressOptions()
                         .withElement (ElementOption.element (targetLocator.resolveFor(actor))))
                 .perform ();
         */
         TouchActions action = new TouchActions(driver);
-        action.clickAndHold(this.targetLocator.resolveFor(actor)).perform();
+//        action.clickAndHold(this.targetLocator.resolveFor(actor)).perform();
+        action.clickAndHold(this.targetLocator.resolveFor(actor));
+        action.perform();
     }
 
     public static Interaction on(Target target)

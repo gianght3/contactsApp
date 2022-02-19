@@ -35,13 +35,13 @@ public class ManageContactSteps {
         anna.can(BrowseTheWeb.with(herBrowser));
     }
 
-    @Given("The home screen displays")
+    @Given("^The home screen displays$")
     public void the_home_screen_displays() {
         anna.should(seeThat(TheCurrentActivity.Name(),
                 equalTo("com.android.contacts.activities.PeopleActivity")));
     }
 
-    @When("The user attempt to open the create contact")
+    @When("^The user attempt to open the create contact$")
     public void the_user_attempt_to_open_the_create_contact() {
         anna.attemptsTo(
                 Click.on(HomeScreen.ADD_CONTACT)
@@ -51,14 +51,14 @@ public class ManageContactSteps {
     @When("^The user attempt to view a contact detail$")
     public void the_user_attempt_to_view_a_contact_detail() {
         anna.attemptsTo(
-                ViewContactDetail.at(1)
+                ViewContactDetail.byName("1068")
         );
     }
 
     @When("^The user attempt to select a contact from the list$")
     public void the_user_attempt_to_select_a_contact_from_the_list() {
         anna.attemptsTo(
-                SelectContactFromList.at(1)
+                SelectContactFromList.at(15)
         );
     }
 
@@ -89,27 +89,27 @@ public class ManageContactSteps {
 
     }
 
-    @When("The user attempt to change the contact source to device")
+    @When("^The user attempt to change the contact source to device$")
     public void the_user_attempt_to_change_the_contact_source_to_device() {
         anna.attemptsTo(ChangeContactSource.to("Device"));
     }
 
-    @Then("The list of device contacts will be showed")
+    @Then("^The list of device contacts will be showed$")
     public void the_list_of_device_contact_will_be_showed() {
         anna.should(
-                seeThat(TheListOfContacts.Display(), hasSize(equalTo(7))),
-                seeThat(TheListOfContacts.Display(), hasItem("Dinh Luyen"))
+                seeThat(TheListOfContacts.Display(), hasSize(equalTo(9))),
+                seeThat(TheListOfContacts.Display(), hasItem("Gianght3"))
         );
     }
 
-    @Then("The contact source will be showed for selection")
+    @Then("^The contact source will be showed for selection$")
     public void the_contact_source_will_be_showed_for_selection() {
         anna.should(
                 seeThat(the(ContactSourceScreen.CONTACT_SOURCE_POPUP), isVisible())
         );
     }
 
-    @Then("The new contact screen will be showed")
+    @Then("^The new contact screen will be showed$")
     public void the_new_contact_screen_will_be_showed() {
         anna.should(
                 seeThat(TheCurrentActivity.Name(),

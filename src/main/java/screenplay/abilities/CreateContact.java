@@ -6,10 +6,12 @@ import screenplay.models.Contact;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class CreateContact extends Contact implements Ability{
     private List<Contact> Contacts;
@@ -24,8 +26,10 @@ public class CreateContact extends Contact implements Ability{
 
         try {
             ClassLoader classLoader = getClass().getClassLoader();
-            String dataPath  = classLoader.getResource("data/createcontact.json").getPath();
 
+//          String dataPath  = Objects.requireNonNull(classLoader.getResource("data//createcontact.json")).getPath();
+            URI uri = Objects.requireNonNull(classLoader.getResource("data//createcontact.json")).toURI();
+            String dataPath = Paths.get(uri).toString();
             Reader reader = Files.newBufferedReader(Paths.get(dataPath));
             this.Contacts = Arrays.asList(gson.fromJson(reader, Contact[].class));
 
