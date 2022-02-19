@@ -9,7 +9,7 @@ public class ContactDetailScreen {
             .located(By.id("com.google.android.contacts:id/large_title"));
 
     public static Target PhoneNumber = Target.the("Phone number")
-            .locatedBy("//*[contains(@content-desc,\"Call Phone\")]//*[@resource-id=\"com.google.android.contacts:id/header\"]");
+            .locatedBy("//*[contains(@content-desc,\"Call Mobile\")]//*[@resource-id=\"com.google.android.contacts:id/header\"]");
 
     public static Target Email = Target.the("Email address")
             .locatedBy("//*[contains(@content-desc,\"Email\")]//*[@resource-id=\"com.google.android.contacts:id/header\"]");
