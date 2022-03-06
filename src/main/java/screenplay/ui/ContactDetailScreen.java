@@ -5,6 +5,12 @@ import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
 
 public class ContactDetailScreen {
+    public static final Target BTN_EDIT = Target.the("Edit Button")
+            .located(By.id("com.google.android.contacts:id/floating_action_button"));
+
+    public static final Target VIDEO_ACTION = Target.the("Call video button")
+            .located(By.id("com.google.android.contacts:id/verb_video"));
+
     public static Target FullName = Target.the("Fullname")
             .located(By.id("com.google.android.contacts:id/large_title"));
 
@@ -22,4 +28,5 @@ public class ContactDetailScreen {
 
     public static Target SEND_EMAIL_ACTION = Target.the("Send Email button")
             .located(By.id("com.google.android.contacts:id/verb_email"));
+
 }

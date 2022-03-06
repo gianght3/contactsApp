@@ -1,6 +1,6 @@
-Feature: Create Contact
-  Scenario: Show contact detail screen after created.
-    Given The Create contact on Device source is displayed
-    When The user attempt to add a new contact
-    Then The user should see these information on contact detail
-    And The action will be displayed for according contact's information
+Feature: Edit contact
+  Scenario: Show Edit contact screen after click edit button
+    Given The home screen displays
+    When The user attempt to select a contact to edit from the list
+    Then The edit contact screen will be showed
+    And The user should see the information in the edit screen the same the information of the contact

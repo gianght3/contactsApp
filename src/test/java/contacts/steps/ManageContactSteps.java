@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import screenplay.questions.TheListOfContacts;
 import screenplay.questions.ToastMessage;
 import screenplay.tasks.ChangeContactSource;
+import screenplay.tasks.SearchContact;
 import screenplay.tasks.SelectContactFromList;
 import screenplay.tasks.ViewContactDetail;
 import screenplay.ui.ContactSourceScreen;
@@ -159,4 +160,5 @@ public class ManageContactSteps {
                 seeThat(TheListOfContacts.isContains(delete_contact_name), equalTo(false))
         );
     }
+
 }

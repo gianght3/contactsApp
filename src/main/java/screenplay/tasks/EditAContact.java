@@ -3,14 +3,10 @@ package screenplay.tasks;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.Scroll;
-
 import net.serenitybdd.screenplay.conditions.Check;
-
-import screenplay.abilities.CreateContact;
+import screenplay.abilities.EditContact;
 import screenplay.actions.Tap;
 import screenplay.models.Contact;
 import screenplay.ui.CreateContactScreen;
@@ -18,24 +14,22 @@ import screenplay.ui.CreateContactScreen;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 
-public class AddNewContact implements Task {
+public class EditAContact implements Task {
     private boolean isSave;
-    public AddNewContact(boolean isSave)
+    public EditAContact(boolean isSave)
     {
         this.isSave = isSave;
     }
     @Override
     public <T extends Actor> void performAs(T actor) {
-//        WebDriver driver= actor.abilityTo(BrowseTheWeb.class).getDriver();
-//        WebElement inputEmail=driver.findElement(By.xpath("//android.widget.EditText[@text='Email']"));
-        Contact contactData = actor.abilityTo(CreateContact.class).takeAContact();
+        Contact contactData = actor.abilityTo(EditContact.class).takeAContact();
                 actor.attemptsTo(
                 Enter.theValue(contactData.FirstName).into(CreateContactScreen.FIRST_NAME),
                 Enter.theValue(contactData.LastName).into(CreateContactScreen.LAST_NAME),
                 Enter.theValue(contactData.Company).into(CreateContactScreen.COMPANY),
                 Enter.theValue(contactData.Phone).into(CreateContactScreen.PHONE),
-                Tap.on(CreateContactScreen.CONTAINER).inSecond(2).thenSwipeUp().release(),
-                Enter.theValue(contactData.Email).into(CreateContactScreen.EMAIL),
+//                Tap.on(CreateContactScreen.CONTAINER).inSecond(2).thenSwipeUp().release(),
+//                Enter.theValue(contactData.Email).into(CreateContactScreen.EMAIL),
 
                 Check.whether(this.isSave).andIfSo(Click.on(CreateContactScreen.SAVE_CONTACT))
                         .otherwise(Click.on(CreateContactScreen.CANCEL))
@@ -44,11 +38,11 @@ public class AddNewContact implements Task {
 
     public static Performable thenSave()
     {
-        return instrumented(AddNewContact.class, true);
+        return instrumented(EditAContact.class, true);
     }
 
     public static Performable thenCancel()
     {
-        return instrumented(AddNewContact.class, false);
+        return instrumented(EditAContact.class, false);
     }
 }

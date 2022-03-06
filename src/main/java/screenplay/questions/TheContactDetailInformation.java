@@ -16,4 +16,5 @@ public class TheContactDetailInformation {
     public static Question<String> Email(){
         return actor->Text.of(ContactDetailScreen.Email).viewedBy(actor).asString();
     }
+
 }
